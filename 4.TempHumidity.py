@@ -1,20 +1,19 @@
-#import RPi.GPIO as GPIO
 import Adafruit_DHT
 import time
-#import sys
+import datetime
 
-#GPIO.setmode(GPIO.BCM)
-#GPIO.setwarnings(False)
-
-#GPIO Pin of the component
 DHT_PIN = 4
 DHT_SENSOR = Adafruit_DHT.DHT11
 
 while True:
+    e = datetime.datetime.now()
     humidity, temperature = Adafruit_DHT.read(DHT_SENSOR, DHT_PIN)
+    loc = "JHB"
+    timed = "%s:%s:%s" % (e.hour, e.minute, e.second)
+    dated = datetime.date.today()
+
     if humidity is not None and temperature is not None:
-    #if temperature is not None:
-        print ("Temp {0:0.1f} C Humidy {1:0.1f} %".format(temperature, humidity))
+        print ("Location", loc, "Time ", timed, "Date", dated, "Temp", temperature,"C Humidy", humidity,"%")
     else:
         print("Sensor Failure");
     time.sleep(5);
