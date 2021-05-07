@@ -6,7 +6,7 @@ import psutil
 conn = sqlite3.connect("temp.db")
 c = conn.cursor()
 
-q = "select * from temph"
+q = "select temperature, humidity from iotTable"
 x = c.execute(q)
 t = x.fetchall();
 
